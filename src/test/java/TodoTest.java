@@ -18,11 +18,11 @@ public class TodoTest {
 
     @Test
     public void creationValidToDo() {
-        String input = "todo borrow book";
+        String input = "todo borrow book /in 2";
         ITask expectedTask;
         try {
             expectedTask = taskFactory.createTask(input);
-            ITask dummyTask = new ToDos("borrow book");
+            ITask dummyTask = new ToDos("borrow book","2");
             assertEquals(expectedTask.getDescription(), dummyTask.getDescription());
             assertEquals(expectedTask.getInitials(), dummyTask.getInitials());
             assertEquals(expectedTask.getStatusIcon(), dummyTask.getStatusIcon());

@@ -31,11 +31,14 @@ public class TaskFactory {
         switch (allArgs[0]) {
         case "todo":
             listArgs.remove(0);
+            tempString = String.join(" ", listArgs);
+            parsedStrings = tempString.split(" /in ");
             if (listArgs.size() == 0) {
                 throw new DukeException("☹ OOPS!!! The description of a todo cannot be empty.");
+            } else if (parsedStrings.length == 1) {
+                throw new DukeException("☹ OOPS!!! The todo duration cannot be empty.");
             }
-            String description = String.join(" ", listArgs);
-            return new ToDos(description);
+            return new ToDos(parsedStrings[0], parsedStrings[1]);
         case "deadline":
             listArgs.remove(0); // Remove "deadline"
             tempString = String.join(" ", listArgs);

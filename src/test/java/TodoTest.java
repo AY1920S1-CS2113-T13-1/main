@@ -17,7 +17,24 @@ public class TodoTest {
     }
 
     @Test
-    public void creationValidToDo() {
+    public void testCreationValidToDo() {
+        String input = "todo borrow book";
+        ITask expectedTask;
+        try {
+            expectedTask = taskFactory.createTask(input);
+            ITask dummyTask = new ToDos("borrow book");
+            assertEquals(expectedTask.getDescription(), dummyTask.getDescription());
+            assertEquals(expectedTask.getInitials(), dummyTask.getInitials());
+            assertEquals(expectedTask.getStatusIcon(), dummyTask.getStatusIcon());
+            dummyTask.markAsDone();
+            assertNotEquals(expectedTask.getStatusIcon(), dummyTask.getStatusIcon());
+        } catch (DukeException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testCreationValidToDoWithDuration() {
         String input = "todo borrow book /in 2";
         ITask expectedTask;
         try {

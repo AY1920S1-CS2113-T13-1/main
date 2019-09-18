@@ -16,6 +16,18 @@ public class ToDos implements ITask, Serializable {
      *
      * @param description : Description of new task
      */
+    public ToDos(String description) {
+        this.description = description;
+        this.isDone = false;
+        this.initials = "T";
+    }
+
+    /**
+     * Constructor of ToDos data model.
+     *
+     * @param description : Description of new task
+     * @param taskDuration : Duration of the task in hour string.
+     */
     public ToDos(String description, String taskDuration) {
         this.description = description;
         this.isDone = false;
@@ -35,7 +47,11 @@ public class ToDos implements ITask, Serializable {
 
     @Override
     public String getDescription() {
-        return this.description + " (needs " + taskDuration + " hours)";
+        if (this.description.isBlank()) {
+            return this.description;
+        } else {
+            return this.description + " (needs " + taskDuration + " hours)";
+        }
     }
 
     @Override

@@ -83,7 +83,9 @@ public class TaskList implements Serializable {
      * @return : Boolean value which gives status of anomaly detection.
      */
     private boolean detectAnomalies(ITask newTask) {
-        if (newTask.getDateTime().equals("")) {
+        if (newTask instanceof ToDos) {
+            return false;
+        } else if (newTask.getDateTime().equals("")) {
             return false;
         }
         schedule = getSchedule(newTask.getDateTime());

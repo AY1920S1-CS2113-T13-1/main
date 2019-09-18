@@ -36,9 +36,10 @@ public class TaskFactory {
             if (listArgs.size() == 0) {
                 throw new DukeException("☹ OOPS!!! The description of a todo cannot be empty.");
             } else if (parsedStrings.length == 1) {
-                throw new DukeException("☹ OOPS!!! The todo duration cannot be empty.");
+                return new ToDos(parsedStrings[0]);
+            } else {
+                return new ToDos(parsedStrings[0], parsedStrings[1]);
             }
-            return new ToDos(parsedStrings[0], parsedStrings[1]);
         case "deadline":
             listArgs.remove(0); // Remove "deadline"
             tempString = String.join(" ", listArgs);

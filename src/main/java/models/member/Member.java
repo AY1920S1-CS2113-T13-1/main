@@ -21,6 +21,7 @@ public class Member implements IMember {
         this.phone = phone;
         this.email = email;
         this.indexNumber = indexNumber;
+        this.memberTaskList = new MemberTaskList();
     }
 
     @Override
@@ -53,5 +54,9 @@ public class Member implements IMember {
 
     public void assignTask(Task task) {
         this.memberTaskList.addAssignedTask(task);
+    }
+
+    public void unassignTask(Task task) {
+        this.memberTaskList.removeTask(task);
     }
 }

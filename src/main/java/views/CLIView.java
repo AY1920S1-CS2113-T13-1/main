@@ -204,13 +204,10 @@ public class CLIView {
         Task task, IProject projectToManage) {
         if (assign.size() > 0) {
             for (Integer i : assign) {
-                Member toAssign = projectToManage.getMembers().getMember(i);
-                task.assignMember(toAssign);
-                //For now only tasks will have list of members assigned.
-                //Will refactor and implement a way such that when a task is assigned,
-                //both the tasklist (for the member) and the memberlist (for the task)
-                // will be updated.
-                consolePrint("Assigned task to: " + toAssign.getName());
+                Member memberToAssign = projectToManage.getMembers().getMember(i);
+                task.assignMember(memberToAssign);
+                memberToAssign.assignTask(task);
+                consolePrint("Assigned task to: " + memberToAssign.getName());
             }
         }
         if (unassign.size() > 0) {
@@ -218,6 +215,7 @@ public class CLIView {
                 task.removeMember(i);
                 consolePrint("Unassigned task to: "
                     + projectToManage.getMembers().getMember(i).getName());
+                projectToManage.getMembers().getMember(i).unassignTask(task);
                 //recalculate credits for other members assigned to task if necessary
             }
         }

@@ -56,4 +56,8 @@ public class TaskList {
     public Task getTask(int taskIndex) {
         return this.taskList.get(taskIndex - 1);
     }
+
+    public void removeTask(Task task) {
+        this.taskList.remove(task.getIndexNumber() - 1);
+    }
 }

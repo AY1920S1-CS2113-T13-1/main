@@ -15,6 +15,7 @@ public class Task {
     private TaskState taskState;
     private TaskMemberList taskMemberList;
     private ArrayList<String> taskRequirements;
+    private int taskIndexNumber;
 
     /**
      * Class representing a task in a project.
@@ -87,5 +88,13 @@ public class Task {
 
     public ArrayList<String> getTaskRequirements() {
         return this.taskRequirements;
+    }
+
+    public int getIndexNumber() {
+        return this.taskIndexNumber;
+    }
+
+    public void setIndexNumber(int newIndexNumber) {
+        this.taskIndexNumber = newIndexNumber;
     }
 }

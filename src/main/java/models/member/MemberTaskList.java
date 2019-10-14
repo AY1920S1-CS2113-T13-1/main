@@ -13,4 +13,6 @@ public class MemberTaskList {
         this.memberTaskList.addTask(task);
     }
 
+    public void removeTask(Task task) { this.memberTaskList.removeTask(task);
+    }
 }

@@ -58,6 +58,6 @@ public class TaskList {
     }
 
     public void removeTask(Task task) {
-        this.taskList.remove(task.getIndexNumber() - 1);
+        this.taskList.remove(this.taskList.indexOf(task));
     }
 }
